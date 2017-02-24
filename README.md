@@ -8,54 +8,54 @@ Based on https://wiki.qt.io/RaspberryPi2EGLFS, https://thebugfreeblog.blogspot.c
  - Tested on clean `Ubuntu 16.04` as host and clean `Raspbian Jessie Lite 2017-01-11` on device
 
 ## Guide
-1) update values in `env.sh` (`RPIDEV_DEVICE_*` and optionally other settings)
-2) on host install tools and clone this repo
-```sh
-# install tools
-sudo apt-get install build-essential sshpass git
+1. update values in `env.sh` (`RPIDEV_DEVICE_*` and optionally other settings)
+2. on host install tools and clone this repo
+    ```sh
+    # install tools
+    sudo apt-get install build-essential sshpass git
 
-# clone this repo
-mkdir -p ~/raspi/scripts
-cd ~/raspi/scripts
-git clone https://github.com/Kukkimonsuta/rpi-buildqt.git .
-```
-3) prepare RPi
-```sh
-# change gpu memory to 256 MB
-sudo raspi-config
+    # clone this repo
+    mkdir -p ~/raspi/scripts
+    cd ~/raspi/scripts
+    git clone https://github.com/Kukkimonsuta/rpi-buildqt.git .
+    ```
+3. prepare RPi
+    ```sh
+    # change gpu memory to 256 MB
+    sudo raspi-config
 
-# uncomment deb-src line
-sudo nano /etc/apt/sources.list
+    # uncomment deb-src line
+    sudo nano /etc/apt/sources.list
 
-# install qt dependencies
-sudo apt-get update
-sudo apt-get build-dep qt4-x11
-sudo apt-get build-dep libqt5gui5
-sudo apt-get install libudev-dev libinput-dev libts-dev libxcb-xinerama0-dev libxcb-xinerama0 libsmbclient-dev libssh-dev libv4l-dev libboost1.55-all-dev libbz2-dev
+    # install qt dependencies
+    sudo apt-get update
+    sudo apt-get build-dep qt4-x11
+    sudo apt-get build-dep libqt5gui5
+    sudo apt-get install libudev-dev libinput-dev libts-dev libxcb-xinerama0-dev libxcb-xinerama0 libsmbclient-dev libssh-dev libv4l-dev libboost1.55-all-dev libbz2-dev
 
-# remove gstreamer
-sudo apt-get purge *gstreamer*
+    # remove gstreamer
+    sudo apt-get purge *gstreamer*
 
-# fix old egl
-sudo rm /usr/lib/arm-linux-gnueabihf/libEGL.so.1.0.0 /usr/lib/arm-linux-gnueabihf/libGLESv2.so.2.0.0
-sudo ln -s /opt/vc/lib/libEGL.so /usr/lib/arm-linux-gnueabihf/libEGL.so.1.0.0
-sudo ln -s /opt/vc/lib/libGLESv2.so /usr/lib/arm-linux-gnueabihf/libGLESv2.so.2.0.0
+    # fix old egl
+    sudo rm /usr/lib/arm-linux-gnueabihf/libEGL.so.1.0.0 /usr/lib/arm-linux-gnueabihf/libGLESv2.so.2.0.0
+    sudo ln -s /opt/vc/lib/libEGL.so /usr/lib/arm-linux-gnueabihf/libEGL.so.1.0.0
+    sudo ln -s /opt/vc/lib/libGLESv2.so /usr/lib/arm-linux-gnueabihf/libGLESv2.so.2.0.0
 
-# create qt install dir (must be at the path `QT_DEVICE_DIR`, owned by user `RPIDEV_DEVICE_USER` defined in `env.sh`)
-sudo mkdir -p /usr/local/qt5.8
-sudo chown pi:pi /usr/local/qt5.8
+    # create qt install dir (must be at the path `QT_DEVICE_DIR`, owned by user `RPIDEV_DEVICE_USER` defined in `env.sh`)
+    sudo mkdir -p /usr/local/qt5.8
+    sudo chown pi:pi /usr/local/qt5.8
 
-# register the lib directory in ld
-echo /usr/local/qt5.8/lib | sudo tee /etc/ld.so.conf.d/qt5.8.conf
-```
-4) run `1_download.sh`, this will download all required repositories
-5) run `2_sync.sh`, this will connect to RPi and creates a sysroot for crosscompilation
-6) run `3.0_build_qtbase.sh`, this will build and install `qtbase`
-7) run `3.*_build_*.sh`, this will build and install modules for qt. Feel free to add more from https://github.com/qt
-8) run `4_build_piomxtextures.sh`, this will build and install `piomxtextures`
-9) run `5_sync_to_device.sh`, this will copy qt5 to the device
-10) on RPi run `ldconfig`
-```
-sudo ldconfig
-```
-11) `~/piomxtextures_pocplayer /opt/vc/src/hello_pi/hello_video/test.h264`
+    # register the lib directory in ld
+    echo /usr/local/qt5.8/lib | sudo tee /etc/ld.so.conf.d/qt5.8.conf
+    ```
+4. run `1_download.sh`, this will download all required repositories
+5. run `2_sync.sh`, this will connect to RPi and creates a sysroot for crosscompilation
+6. run `3.0_build_qtbase.sh`, this will build and install `qtbase`
+7. run `3.*_build_*.sh`, this will build and install modules for qt. Feel free to add more from https://github.com/qt
+8. run `4_build_piomxtextures.sh`, this will build and install `piomxtextures`
+9. run `5_sync_to_device.sh`, this will copy qt5 to the device
+10. on RPi run `ldconfig`
+    ```
+    sudo ldconfig
+    ```
+11. `~/piomxtextures_pocplayer /opt/vc/src/hello_pi/hello_video/test.h264`
