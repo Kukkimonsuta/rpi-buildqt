@@ -6,6 +6,7 @@ Based on https://wiki.qt.io/RaspberryPi2EGLFS, https://thebugfreeblog.blogspot.c
  - Uses the `arm-rpi-4.9.3-linux-gnueabihf` toolchain
  - Tested only on RPi 3 (but should support pi1/pi2 just fine)
  - Tested on clean `Ubuntu 16.04` as host and clean `Raspbian Jessie Lite 2017-01-11` on device
+ - To use the toolchain once downloaded you must run `source env.sh` first to setup environment variables.
 
 ## Guide
 1. update values in `env.sh` (`RPIDEV_DEVICE_*` and optionally other settings)
