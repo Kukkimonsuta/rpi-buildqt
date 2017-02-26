@@ -63,4 +63,4 @@ cloneOrPull https://github.com/qt/qtmultimedia.git ${RPIDEV_SRC}/qtmultimedia 5.
 echo
 echo == Download piomxtextures ==
 echo
-cloneOrPull https://github.com/Kukkimonsuta/pi.git ${RPIDEV_SRC}/piomxtextures add-rpi3
+cloneOrPull https://github.com/carlonluca/pi.git ${RPIDEV_SRC}/piomxtextures master
