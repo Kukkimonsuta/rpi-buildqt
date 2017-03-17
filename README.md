@@ -16,9 +16,13 @@ Based on https://wiki.qt.io/RaspberryPi2EGLFS, https://thebugfreeblog.blogspot.c
     sudo apt-get install build-essential sshpass git
 
     # clone this repo
-    mkdir -p ~/raspi/scripts
-    cd ~/raspi/scripts
+    mkdir -p ~/raspi
+    cd ~/raspi
     git clone https://github.com/Kukkimonsuta/rpi-buildqt.git .
+    
+    # add executable permissions (this may not be required)
+    chmod +x scripts/0_init.sh
+    ./scripts/0_init.sh
     ```
 3. prepare RPi
     ```sh
