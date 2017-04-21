@@ -11,8 +11,8 @@ cd $SOURCE_DIR
 echo
 echo "== Cleaning previous build =="
 echo
-rm -rf QT_INSTALL_DIR
-rm -rf QT_INSTALL_DIR_HOST
+rm -rf ${QT_INSTALL_DIR}
+rm -rf ${QT_INSTALL_DIR_HOST}
 
 echo
 echo "== Configuring qtbase =="
