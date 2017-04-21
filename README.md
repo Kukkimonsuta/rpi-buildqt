@@ -14,7 +14,7 @@ Based on https://wiki.qt.io/RaspberryPi2EGLFS, https://thebugfreeblog.blogspot.c
 2. on host install tools and clone this repo
     ```sh
     # install tools
-    sudo apt-get install build-essential sshpass git python
+    sudo apt-get install build-essential sshpass git python pkg-config
 
     # clone this repo
     mkdir -p ~/raspi
