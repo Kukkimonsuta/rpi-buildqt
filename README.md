@@ -5,7 +5,8 @@ Based on https://wiki.qt.io/RaspberryPi2EGLFS, https://thebugfreeblog.blogspot.c
 ## Notes
  - Uses the `arm-rpi-4.9.3-linux-gnueabihf` toolchain
  - Tested only on RPi 3 (but should support pi1/pi2 just fine)
- - Tested on clean `Ubuntu 16.04` as host and clean `Raspbian Jessie Lite 2017-01-11` on device
+ - Tested on clean `Ubuntu 16.04 (64 bit)` as host and clean `Raspbian Jessie Lite 2017-01-11` on device
+ - Make sure to use 64 bit host OS as that's what the used toolchain is built for
  - To use the toolchain once downloaded you must run `source env.sh` first to setup environment variables.
 
 ## Guide
@@ -13,7 +14,7 @@ Based on https://wiki.qt.io/RaspberryPi2EGLFS, https://thebugfreeblog.blogspot.c
 2. on host install tools and clone this repo
     ```sh
     # install tools
-    sudo apt-get install build-essential sshpass git
+    sudo apt-get install build-essential sshpass git python
 
     # clone this repo
     mkdir -p ~/raspi
