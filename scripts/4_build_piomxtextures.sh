@@ -13,7 +13,7 @@ if [ "$RPIDEV_DEVICE_VERSION" == "pi1" ]; then
 elif [ "$RPIDEV_DEVICE_VERSION" == "pi2" ]; then
     DEVICE=pi2
 elif [ "$RPIDEV_DEVICE_VERSION" == "pi3" ]; then
-    DEVICE=pi2
+    DEVICE=pi3
 else
     echo "${BASH_SOURCE[1]}: line ${BASH_LINENO[0]}: ${FUNCNAME[1]}: Unknown device $RPIDEV_DEVICE_VERSION." >&2
     exit 1

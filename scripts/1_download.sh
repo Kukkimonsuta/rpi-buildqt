@@ -8,7 +8,7 @@ source $SCRIPTDIR/env.sh
 function cloneOrPull {
     if [ ! -d "$2" ]
     then
-        git clone $1 $2 -b $3
+        git clone $1 $2 -b $3 --depth 1
     else
         git -C $2 clean -dfx
         git -C $2 reset --hard
@@ -63,4 +63,4 @@ cloneOrPull https://github.com/qt/qtmultimedia.git ${RPIDEV_SRC}/qtmultimedia 5.
 echo
 echo == Download piomxtextures ==
 echo
-cloneOrPull https://github.com/carlonluca/pi.git ${RPIDEV_SRC}/piomxtextures master
+cloneOrPull https://github.com/carlonluca/pot.git ${RPIDEV_SRC}/piomxtextures master
