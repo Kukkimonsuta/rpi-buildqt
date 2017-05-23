@@ -22,33 +22,32 @@ read -p "Continue?"  -n1 -s
 
 for m in ${MODULES_X}; do
 
-		if [ m = "qtwebengine" ]; then
-			buildArg="WEBENGINE_CONFIG+=use_proprietary_codecs"
-		else
-			buildArg=""
-		fi
+	if [ m = "qtwebengine" ]; then
+		buildArg="WEBENGINE_CONFIG+=use_proprietary_codecs"
+	else
+		buildArg=""
+	fi
 
-		cd $m
+	cd $m
+	echo
+	echo "== Configuring ${m} =="
+	echo
+	${QT_INSTALL_DIR_HOST}/bin/qmake -r ${buildArg}
+	
+	echo
+	echo "== Building ${m} =="
+	echo
+	make -j${RPIDEV_JOBS}
+	
+	echo
+	echo "== Installing ${m} =="
+	echo
+	make install
 
-    echo
-    echo "== Configuring ${m} =="
-    echo
-    ${QT_INSTALL_DIR_HOST}/bin/qmake -r ${buildArg}
 
-    echo
-    echo "== Building ${m} =="
-    echo
-    make -j${RPIDEV_JOBS}
-
-    echo
-    echo "== Installing ${m} =="
-    echo
-    make install
-
-
-		cd ../
-    echo
-    read -p " == Finished ${m} ==  Continue?"  -n1 -s
+	cd ../
+	echo
+	read -p " == Finished ${m} ==  Continue?"  -n1 -s
 	done
-  echo
-	echo " All modules done."
+echo
+echo " All modules done."
