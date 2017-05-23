@@ -1,5 +1,4 @@
 #!/bin/bash
-
 set -e
 
 SCRIPTDIR=$(dirname "$0")
@@ -21,11 +20,9 @@ read -p "Continue?"  -n1 -s
 
 
 for m in ${MODULES_X}; do
-
-	if [ m = "qtwebengine" ]; then
+	buildArg=""
+	if [ $m = "qtwebengine" ]; then
 		buildArg="WEBENGINE_CONFIG+=use_proprietary_codecs"
-	else
-		buildArg=""
 	fi
 
 	cd $m
@@ -48,6 +45,6 @@ for m in ${MODULES_X}; do
 	cd ../
 	echo
 	read -p " == Finished ${m} ==  Continue?"  -n1 -s
-	done
+done
 echo
 echo " All modules done."
