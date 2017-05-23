@@ -10,8 +10,7 @@ Based on https://wiki.qt.io/RaspberryPi2EGLFS, https://thebugfreeblog.blogspot.c
  - To use the toolchain once downloaded you must run `source env.sh` first to setup environment variables.
 
 ## Guide
-1. update values in `env.sh` (`RPIDEV_DEVICE_*` and optionally other settings)
-2. on host install tools and clone this repo
+1. on host install tools and clone this repo
     ```sh
     # install tools
     sudo apt-get install build-essential sshpass git python pkg-config
@@ -25,7 +24,8 @@ Based on https://wiki.qt.io/RaspberryPi2EGLFS, https://thebugfreeblog.blogspot.c
     chmod +x scripts/0_init.sh
     ./scripts/0_init.sh
     ```
-3. prepare RPi
+2. update values in `env.sh` (`RPIDEV_DEVICE_*` and optionally other settings)
+3. prepare RPi (ideally use clean 'RASPBIAN JESSIE LITE' image)
     ```sh
     # change gpu memory to 256 MB
     sudo raspi-config
