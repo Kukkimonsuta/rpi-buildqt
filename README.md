@@ -27,7 +27,7 @@ Based on https://wiki.qt.io/RaspberryPi2EGLFS, https://thebugfreeblog.blogspot.c
 2. update values in `env.sh` (`RPIDEV_DEVICE_*`, qt modules to install and optionally other settings)
 3. prepare RPi (ideally use clean 'RASPBIAN JESSIE LITE' image)
     ```sh
-    # change gpu memory to 256 MB
+    # change gpu memory to 256 MB and Expand File System for SD Card
     sudo raspi-config
 
     # uncomment deb-src line
@@ -59,10 +59,10 @@ Based on https://wiki.qt.io/RaspberryPi2EGLFS, https://thebugfreeblog.blogspot.c
     cd scripts
     ```
 4. run `1_download.sh`, this will download all required repositories
-4.1 run `1.x_download_modules.sh`, this will download all modules given in env.sh
+4.1 run `1.x_download_modules.sh`, this will download _all_ qt modules given in env.sh
 5. run `2_sync.sh`, this will connect to RPi and creates a sysroot for crosscompilation
 6. run `3.0_build_qtbase.sh`, this will build and install `qtbase`
-7. run `3.x_build_modules.sh`, this will build and install all modules for qt given in env.sh. Feel free to add more from https://github.com/qt (You can also do `3.x_build_modules.sh qtfoo` for only qtfoo)
+7. run `3.x_build_modules.sh`, this will build and install _all_ qt modules given in env.sh. Feel free to add more from https://github.com/qt (You can also do `3.x_build_modules.sh qtfoo` for only qtfoo)
 8. run `4_build_piomxtextures.sh`, this will build and install `piomxtextures`
 9. run `5_sync_to_device.sh`, this will copy qt5 to the device
 10. on RPi run `ldconfig`
