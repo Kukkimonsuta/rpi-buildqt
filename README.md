@@ -24,7 +24,7 @@ Based on https://wiki.qt.io/RaspberryPi2EGLFS, https://thebugfreeblog.blogspot.c
     chmod +x scripts/0_init.sh
     ./scripts/0_init.sh
     ```
-2. update values in `env.sh` (`RPIDEV_DEVICE_*` and optionally other settings)
+2. update values in `env.sh` (`RPIDEV_DEVICE_*`, qt modules to install and optionally other settings)
 3. prepare RPi (ideally use clean 'RASPBIAN JESSIE LITE' image)
     ```sh
     # change gpu memory to 256 MB
@@ -40,7 +40,7 @@ Based on https://wiki.qt.io/RaspberryPi2EGLFS, https://thebugfreeblog.blogspot.c
     sudo apt-get install libudev-dev libinput-dev libts-dev libxcb-xinerama0-dev libxcb-xinerama0 libsmbclient-dev libssh-dev libv4l-dev libboost1.55-all-dev libbz2-dev
 
     # remove gstreamer
-    sudo apt-get purge *gstreamer*
+    sudo apt-get purge gstreamer*
 
     # fix old egl
     sudo rm /usr/lib/arm-linux-gnueabihf/libEGL.so.1.0.0 /usr/lib/arm-linux-gnueabihf/libGLESv2.so.2.0.0
@@ -53,11 +53,16 @@ Based on https://wiki.qt.io/RaspberryPi2EGLFS, https://thebugfreeblog.blogspot.c
 
     # register the lib directory in ld
     echo /usr/local/qt5.8/lib | sudo tee /etc/ld.so.conf.d/qt5.8.conf
+
+    # only if you want to compile qtwebengine
+    sudo apt-get install libvpx-dev libvpx1 libvpx1-dbg libsrtp0 libsrtp0-dev libsnappy-dev
+    cd scripts
     ```
 4. run `1_download.sh`, this will download all required repositories
+4.1 run `1.x_download_modules.sh`, this will download all modules given in env.sh
 5. run `2_sync.sh`, this will connect to RPi and creates a sysroot for crosscompilation
 6. run `3.0_build_qtbase.sh`, this will build and install `qtbase`
-7. run `3.*_build_*.sh`, this will build and install modules for qt. Feel free to add more from https://github.com/qt
+7. run `3.x_build_modules.sh`, this will build and install all modules for qt given in env.sh. Feel free to add more from https://github.com/qt (You can also do `3.x_build_modules.sh qtfoo` for only qtfoo)
 8. run `4_build_piomxtextures.sh`, this will build and install `piomxtextures`
 9. run `5_sync_to_device.sh`, this will copy qt5 to the device
 10. on RPi run `ldconfig`
