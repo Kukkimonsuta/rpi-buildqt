@@ -1,6 +1,6 @@
 #!/bin/bash
 
-RPIDEV_ROOT=/tmp/sd-kukki/raspi
+  RPIDEV_ROOT=~/raspi
 export RPIDEV_TOOLS=${RPIDEV_ROOT}/tools
 export RPIDEV_SRC=${RPIDEV_ROOT}/src
 export RPIDEV_BUILD=${RPIDEV_ROOT}/build
