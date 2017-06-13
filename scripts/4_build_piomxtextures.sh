@@ -20,16 +20,24 @@ else
 fi
 
 echo
+echo "== Clean previous build =="
+echo
+cd $SOURCE_DIR
+rm -rf 3rdparty
+git clean -xdf
+
+echo
 echo "== Prepare 3rd party =="
 echo
 cd $SOURCE_DIR/piomxtextures_tools
 ./prepare_3rdparty.sh ${RPIDEV_SRC}/qtbase $DEVICE
 
-# echo
-# echo "== Cleaning previous build =="
-# echo
-# rm -rf QT_INSTALL_DIR
-# rm -rf QT_INSTALL_DIR_HOST
+echo
+echo "== TEMP: use older LightLogger =="
+echo
+cd $SOURCE_DIR/3rdparty/LightLogger
+git fetch --unshallow
+git checkout d39a9f2e88551708a39cf60308b66f9f7f7579a3
 
 echo
 echo "== Configuring piomxtextures =="
