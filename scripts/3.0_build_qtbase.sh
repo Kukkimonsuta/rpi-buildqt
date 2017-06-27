@@ -24,7 +24,7 @@ if [ "$RPIDEV_DEVICE_VERSION" == "pi1" ]; then
 elif [ "$RPIDEV_DEVICE_VERSION" == "pi2" ]; then
     DEVICE=linux-rasp-pi2-g++
 elif [ "$RPIDEV_DEVICE_VERSION" == "pi3" ]; then
-    DEVICE=linux-rpi3-g++
+    DEVICE=linux-rasp-pi3-g++
 else
     echo "${BASH_SOURCE[1]}: line ${BASH_LINENO[0]}: ${FUNCNAME[1]}: Unknown device $RPIDEV_DEVICE_VERSION." >&2
     exit 1
