@@ -38,27 +38,8 @@ chmod +x ${RPIDEV_TOOLS}/arm-bcm2708/arm-rpi-4.9.3-linux-gnueabihf/bin/arm-linux
 echo
 echo == Download qtbase ==
 echo
-cloneOrPull https://github.com/qt/qtbase.git ${RPIDEV_SRC}/qtbase 5.8
+cloneOrPull https://github.com/qt/qtbase.git ${RPIDEV_SRC}/qtbase ${QT_INSTALL_VERSION}
 
-echo
-echo == Download qtdeclarative ==
-echo
-cloneOrPull https://github.com/qt/qtdeclarative.git ${RPIDEV_SRC}/qtdeclarative 5.8
-
-echo
-echo == Download qtquickcontrols ==
-echo
-cloneOrPull https://github.com/qt/qtquickcontrols.git ${RPIDEV_SRC}/qtquickcontrols 5.8
-
-echo
-echo == Download qtquickcontrols2 ==
-echo
-cloneOrPull https://github.com/qt/qtquickcontrols2.git ${RPIDEV_SRC}/qtquickcontrols2 5.8
-
-echo
-echo == Download qtmultimedia ==
-echo
-cloneOrPull https://github.com/qt/qtmultimedia.git ${RPIDEV_SRC}/qtmultimedia 5.8
 
 echo
 echo == Download piomxtextures ==
