@@ -11,22 +11,22 @@ mkdir -p ${RPIDEV_SYSROOT}/opt
 echo
 echo "== Copy /lib =="
 echo
-rsync -avztr --delete --rsh="/usr/bin/sshpass -p ${RPIDEV_DEVICE_PW} ssh -p ${RPIDEV_DEVICE_PORT} -o StrictHostKeyChecking=no -l ${RPIDEV_DEVICE_USER}" ${RPIDEV_DEVICE_ADDRESS}:/lib ${RPIDEV_SYSROOT}
+rsync -avztr --delete --rsync-path="sudo rsync" --rsh="/usr/bin/sshpass -p ${RPIDEV_DEVICE_PW} ssh -p ${RPIDEV_DEVICE_PORT} -o StrictHostKeyChecking=no -l ${RPIDEV_DEVICE_USER}" ${RPIDEV_DEVICE_ADDRESS}:/lib ${RPIDEV_SYSROOT}
 
 echo
 echo "== Copy /usr/include =="
 echo
-rsync -avztr --delete --rsh="/usr/bin/sshpass -p ${RPIDEV_DEVICE_PW} ssh -p ${RPIDEV_DEVICE_PORT} -o StrictHostKeyChecking=no -l ${RPIDEV_DEVICE_USER}" ${RPIDEV_DEVICE_ADDRESS}:/usr/include ${RPIDEV_SYSROOT}/usr
+rsync -avztr --delete --rsync-path="sudo rsync" --rsh="/usr/bin/sshpass -p ${RPIDEV_DEVICE_PW} ssh -p ${RPIDEV_DEVICE_PORT} -o StrictHostKeyChecking=no -l ${RPIDEV_DEVICE_USER}" ${RPIDEV_DEVICE_ADDRESS}:/usr/include ${RPIDEV_SYSROOT}/usr
 
 echo
 echo "== Copy /usr/lib =="
 echo
-rsync -avztr --delete --rsh="/usr/bin/sshpass -p ${RPIDEV_DEVICE_PW} ssh -p ${RPIDEV_DEVICE_PORT} -o StrictHostKeyChecking=no -l ${RPIDEV_DEVICE_USER}" ${RPIDEV_DEVICE_ADDRESS}:/usr/lib ${RPIDEV_SYSROOT}/usr
+rsync -avztr --delete --rsync-path="sudo rsync" --rsh="/usr/bin/sshpass -p ${RPIDEV_DEVICE_PW} ssh -p ${RPIDEV_DEVICE_PORT} -o StrictHostKeyChecking=no -l ${RPIDEV_DEVICE_USER}" ${RPIDEV_DEVICE_ADDRESS}:/usr/lib ${RPIDEV_SYSROOT}/usr
 
 echo
 echo "== Copy /opt/vc =="
 echo
-rsync -avztr --delete --rsh="/usr/bin/sshpass -p ${RPIDEV_DEVICE_PW} ssh -p ${RPIDEV_DEVICE_PORT} -o StrictHostKeyChecking=no -l ${RPIDEV_DEVICE_USER}" ${RPIDEV_DEVICE_ADDRESS}:/opt/vc ${RPIDEV_SYSROOT}/opt
+rsync -avztr --delete --rsync-path="sudo rsync" --rsh="/usr/bin/sshpass -p ${RPIDEV_DEVICE_PW} ssh -p ${RPIDEV_DEVICE_PORT} -o StrictHostKeyChecking=no -l ${RPIDEV_DEVICE_USER}" ${RPIDEV_DEVICE_ADDRESS}:/opt/vc ${RPIDEV_SYSROOT}/opt
 
 echo
 echo "== Fix links =="
