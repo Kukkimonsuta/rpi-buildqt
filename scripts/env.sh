@@ -13,7 +13,7 @@ export RPIDEV_DEVICE_VERSION=pi3            # pi1 pi2 pi3 (only tested pi3)
 export RPIDEV_DEVICE_ADDRESS=10.0.50.124    # ip if device
 export RPIDEV_DEVICE_USER=pi                # username
 export RPIDEV_DEVICE_PW=raspberry           # password
-export RPIDEV_DEVICE_PORT=2222
+export RPIDEV_DEVICE_PORT=22
 
 # qt paths
 export QT_INSTALL_VERSION=5.9
