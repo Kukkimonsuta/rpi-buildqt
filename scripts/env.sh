@@ -1,6 +1,6 @@
 #!/bin/bash
 
-  RPIDEV_ROOT=~/raspi
+RPIDEV_ROOT=~/raspi
 export RPIDEV_TOOLS=${RPIDEV_ROOT}/tools
 export RPIDEV_SRC=${RPIDEV_ROOT}/src
 export RPIDEV_BUILD=${RPIDEV_ROOT}/build
@@ -15,14 +15,19 @@ export RPIDEV_DEVICE_USER=pi                # username
 export RPIDEV_DEVICE_PW=raspberry           # password
 
 # qt paths
-export QT_INSTALL_VERSION=5.8
+export QT_INSTALL_VERSION=5.9
 export QT_INSTALL_DIR=${RPIDEV_BUILD}/qt${QT_INSTALL_VERSION}
 export QT_INSTALL_DIR_HOST=${RPIDEV_BUILD}/qt${QT_INSTALL_VERSION}-host
 export QT_DEVICE_DIR=/usr/local/qt${QT_INSTALL_VERSION}
 
+# qt base
+export QT_BASE_CONFIGURE_EXTRA="--no-xcb -eglfs" # Compiling for EGLFS not X
+
 # qt modules
-export QT_INSTALL_MODULES_X="qtdeclarative qtquickcontrols qtquickcontrols2 qtmultimedia"
-#export QT_INSTALL_MODULES_X="qtdeclarative qtquickcontrols qtquickcontrols2 qtmultimedia qtsvg qtscript qtxmlpatterns qtwebsockets qtserialport qtwebchannel qtwebengine"
+#export QT_INSTALL_MODULES_X="qtdeclarative qtquickcontrols qtquickcontrols2 qtmultimedia"
+#qtdeclarative qtquickcontrols2 qtxmlpatterns
+export QT_INSTALL_MODULES_X="qtdeclarative qtquickcontrols qtquickcontrols2 qtmultimedia qtsvg qtxmlpatterns qtwebsockets qtserialport qtwebchannel qtwebengine"
+
 
 # configure piomxtextures
 export RPI_SYSROOT=${RPIDEV_SYSROOT}
