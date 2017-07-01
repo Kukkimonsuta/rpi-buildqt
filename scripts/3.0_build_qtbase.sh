@@ -24,13 +24,13 @@ if [ "$RPIDEV_DEVICE_VERSION" == "pi1" ]; then
 elif [ "$RPIDEV_DEVICE_VERSION" == "pi2" ]; then
     DEVICE=linux-rasp-pi2-g++
 elif [ "$RPIDEV_DEVICE_VERSION" == "pi3" ]; then
-    DEVICE=linux-rpi3-g++
+    DEVICE=linux-rasp-pi3-g++ # was linux-rpi3-g++ for 5.8?
 else
     echo "${BASH_SOURCE[1]}: line ${BASH_LINENO[0]}: ${FUNCNAME[1]}: Unknown device $RPIDEV_DEVICE_VERSION." >&2
     exit 1
 fi
 
-./configure -release -opengl es2 -no-opengles3 -device ${DEVICE} \
+./configure -release -opengl es2 -no-opengles3 ${QT_BASE_CONFIGURE_EXTRA} -device  \
     -device-option CROSS_COMPILE=${RPIDEV_TOOLS}/arm-bcm2708/arm-rpi-4.9.3-linux-gnueabihf/bin/arm-linux-gnueabihf- \
     -sysroot ${RPIDEV_SYSROOT} -opensource -confirm-license -make libs \
     -prefix ${QT_DEVICE_DIR} -extprefix ${QT_INSTALL_DIR} -hostprefix ${QT_INSTALL_DIR_HOST} -v
