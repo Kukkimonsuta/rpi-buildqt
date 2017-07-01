@@ -22,14 +22,16 @@ read -p "Continue?"  -n1 -s
 for m in ${MODULES_X}; do
 	buildArg=""
 	if [ $m = "qtwebengine" ]; then
-		buildArg="WEBENGINE_CONFIG+=use_proprietary_codecs"
+	  # not sure if -r is needed (doesnt harm though)
+		buildArg="-r WEBENGINE_CONFIG+=use_proprietary_codecs" 
+#		buildArg="-r WEBENGINE_CONFIG+=use_proprietary_codecs WEBENGINE_CONFIG+=use_system_ffmpeg" # using system ffmpeg may be faster???
 	fi
 
 	cd $m
 	echo
 	echo "== Configuring ${m} =="
 	echo
-	${QT_INSTALL_DIR_HOST}/bin/qmake -r ${buildArg}
+	${QT_INSTALL_DIR_HOST}/bin/qmake ${buildArg} 
 	
 	echo
 	echo "== Building ${m} =="

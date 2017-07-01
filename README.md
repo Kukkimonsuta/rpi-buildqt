@@ -22,7 +22,8 @@ Based on https://wiki.qt.io/RaspberryPi2EGLFS, https://thebugfreeblog.blogspot.c
     
     # add executable permissions (this may not be required)
     chmod +x scripts/0_init.sh
-    ./scripts/0_init.sh
+    cd scripts  #always execute scripts from here
+    ./0_init.sh
     ```
 2. update values in `env.sh` (`RPIDEV_DEVICE_*`, qt modules to install and optionally other settings)
 3. prepare RPi (ideally use clean 'RASPBIAN JESSIE LITE' image)
@@ -56,7 +57,11 @@ Based on https://wiki.qt.io/RaspberryPi2EGLFS, https://thebugfreeblog.blogspot.c
 
     # only if you want to compile qtwebengine
     sudo apt-get install libvpx-dev libvpx1 libvpx1-dbg libsrtp0 libsrtp0-dev libsnappy-dev
-    cd scripts
+    # some more libs I added when qtwebengine errored halfway)
+    sudo apt-get install gcc-multilib g++-multilib
+    
+    # some more candidates for libs you may be missing if you get an according error
+    sudo apt-get install gperf bison flex libx32gcc-4.8-dev
     ```
 4. run `1_download.sh`, this will download all required repositories
 4.1 run `1.x_download_modules.sh`, this will download _all_ qt modules given in env.sh
