@@ -3,6 +3,7 @@
 set -e
 
 SCRIPTDIR=$(dirname "$0")
+source $SCRIPTDIR/utils/utils.sh
 source $SCRIPTDIR/env.sh
 
 SOURCE_DIR=${RPIDEV_SRC}/qtbase
@@ -24,23 +25,22 @@ if [ "$RPIDEV_DEVICE_VERSION" == "pi1" ]; then
 elif [ "$RPIDEV_DEVICE_VERSION" == "pi2" ]; then
     DEVICE=linux-rasp-pi2-g++
 elif [ "$RPIDEV_DEVICE_VERSION" == "pi3" ]; then
-    DEVICE=linux-rasp-pi3-g++ # was linux-rpi3-g++ for 5.8?
+    if [ "$QT_BUILD_VERSION" == "5.8" ]; then
+        DEVICE=linux-rpi3-g++
+    else
+        DEVICE=linux-rasp-pi3-g++
+    fi
 else
     echo "${BASH_SOURCE[1]}: line ${BASH_LINENO[0]}: ${FUNCNAME[1]}: Unknown device $RPIDEV_DEVICE_VERSION." >&2
     exit 1
 fi
 
-./configure -release -opengl es2 -no-opengles3 ${QT_BASE_CONFIGURE_EXTRA} -device  \
+./configure -release -opengl es2 -no-opengles3 -no-xcb -eglfs -device ${DEVICE} \
     -device-option CROSS_COMPILE=${RPIDEV_TOOLS}/arm-bcm2708/arm-rpi-4.9.3-linux-gnueabihf/bin/arm-linux-gnueabihf- \
     -sysroot ${RPIDEV_SYSROOT} -opensource -confirm-license -make libs \
     -prefix ${QT_DEVICE_DIR} -extprefix ${QT_INSTALL_DIR} -hostprefix ${QT_INSTALL_DIR_HOST} -v
 
-read -p "Continue building? [y/n] " -n 1 -r
-echo
-if [[ ! $REPLY =~ ^[Yy]$ ]]
-then
-    exit 1
-fi
+confirm "Continue building?"
 
 echo
 echo "== Building qtbase =="

@@ -38,3 +38,7 @@ echo "== Link lib paths =="
 echo
 ln -s ${RPIDEV_SYSROOT}/lib/arm-linux-gnueabihf ${RPIDEV_SYSROOT}/lib/arm-linux-gnueabihf/4.9.3
 ln -s ${RPIDEV_SYSROOT}/usr/lib/arm-linux-gnueabihf ${RPIDEV_SYSROOT}/usr/lib/arm-linux-gnueabihf/4.9.3
+
+echo
+echo "== Sysroot ok =="
+echo

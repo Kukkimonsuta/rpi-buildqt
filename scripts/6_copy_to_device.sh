@@ -8,7 +8,7 @@ source $SCRIPTDIR/env.sh
 echo
 echo "== Copy qt =="
 echo
-rsync -avztr --delete --rsh="/usr/bin/sshpass -p ${RPIDEV_DEVICE_PW} ssh -p ${RPIDEV_DEVICE_PORT} -o StrictHostKeyChecking=no -l ${RPIDEV_DEVICE_USER}" ${QT_INSTALL_DIR}/* ${RPIDEV_DEVICE_ADDRESS}:${QT_DEVICE_DIR}
+rsync -avztr --delete --rsync-path="sudo rsync" --rsh="/usr/bin/sshpass -p ${RPIDEV_DEVICE_PW} ssh -p ${RPIDEV_DEVICE_PORT} -o StrictHostKeyChecking=no -l ${RPIDEV_DEVICE_USER}" ${QT_INSTALL_DIR}/* ${RPIDEV_DEVICE_ADDRESS}:${QT_DEVICE_DIR}
 
 echo
 echo "== Copy poc player =="

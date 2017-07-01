@@ -31,11 +31,22 @@ Based on https://wiki.qt.io/RaspberryPi2EGLFS, https://thebugfreeblog.blogspot.c
     # change gpu memory to 256 MB and Expand File System for SD Card
     sudo raspi-config
 
-    # uncomment deb-src line
-    sudo nano /etc/apt/sources.list
-
-    # install qt dependencies
+    # install tools and dependencies
     sudo apt-get update
+    sudo apt-get install rsync
+
+    # qtbase
+    sudo apt-get install libboost1.55-all-dev libudev-dev libinput-dev libts-dev libmtdev-dev libjpeg-dev libfontconfig1-dev libssl-dev libdbus-1-dev libglib2.0-dev
+    # qtmultimedia
+    sudo apt-get install libasound2-dev libpulse-dev gstreamer1.0-omx libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev
+    # piomxtextures
+    sudo apt-get install libssh-dev libsmbclient-dev libv4l-dev
+
+
+
+
+
+
     sudo apt-get build-dep qt4-x11
     sudo apt-get build-dep libqt5gui5
     sudo apt-get install libudev-dev libinput-dev libts-dev libxcb-xinerama0-dev libxcb-xinerama0 libsmbclient-dev libssh-dev libv4l-dev libboost1.55-all-dev libbz2-dev

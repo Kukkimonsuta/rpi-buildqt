@@ -3,20 +3,10 @@
 set -e
 
 SCRIPTDIR=$(dirname "$0")
+source $SCRIPTDIR/utils/utils.sh
 source $SCRIPTDIR/env.sh
 
-function cloneOrPull {
-    if [ ! -d "$2" ]
-    then
-        git clone $1 $2 -b $3 --depth 1
-    else
-        git -C $2 clean -dfx
-        git -C $2 reset --hard
-        git -C $2 pull
-    fi
-} 
-
-mkdir -p ${RPIDEV_SRC}
+mkdir -p $(dirname $(realpath ${RPIDEV_TOOLS}))
 
 echo
 echo == Download tools ==
@@ -36,12 +26,5 @@ chmod +x ${RPIDEV_TOOLS}/arm-bcm2708/arm-rpi-4.9.3-linux-gnueabihf/bin/arm-linux
 chmod +x ${RPIDEV_TOOLS}/arm-bcm2708/arm-rpi-4.9.3-linux-gnueabihf/bin/arm-linux-gnueabihf-g++
 
 echo
-echo == Download qtbase ==
+echo == Tools ok ==
 echo
-cloneOrPull https://github.com/qt/qtbase.git ${RPIDEV_SRC}/qtbase ${QT_INSTALL_VERSION}
-
-
-echo
-echo == Download piomxtextures ==
-echo
-cloneOrPull https://github.com/carlonluca/pot.git ${RPIDEV_SRC}/piomxtextures master
