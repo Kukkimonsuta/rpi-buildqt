@@ -44,16 +44,6 @@ Based on https://wiki.qt.io/RaspberryPi2EGLFS, https://thebugfreeblog.blogspot.c
     # piomxtextures
     sudo apt-get install libssh-dev libsmbclient-dev libv4l-dev
 
-    # only if you want to compile qtwebengine
-    sudo apt-get install libvpx-dev libvpx1 libvpx1-dbg libsrtp0 libsrtp0-dev libsnappy-dev
-    # some more libs I added when qtwebengine errored halfway)
-    sudo apt-get install gcc-multilib g++-multilib
-    # some more candidates for libs you may be missing if you get an according error
-    sudo apt-get install gperf bison flex libx32gcc-4.8-dev
-
-    # remove gstreamer
-    sudo apt-get purge *gstreamer*
-
     # create qt install dir (must be at the path `QT_DEVICE_DIR` defined in `env.sh`)
     sudo mkdir -p /usr/local/qt5.8
 
