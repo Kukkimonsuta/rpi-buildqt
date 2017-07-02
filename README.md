@@ -13,7 +13,7 @@ Based on https://wiki.qt.io/RaspberryPi2EGLFS, https://thebugfreeblog.blogspot.c
 1. on host install tools and clone this repo
     ```sh
     # install tools
-    sudo apt-get install build-essential sshpass git python pkg-config
+    sudo apt-get install build-essential sshpass git python pkg-config re2c gperf bison flex ninja python ruby gcc-multilib g++-multilib
 
     # clone this repo
     mkdir -p ~/raspi
@@ -43,6 +43,9 @@ Based on https://wiki.qt.io/RaspberryPi2EGLFS, https://thebugfreeblog.blogspot.c
     
     # piomxtextures
     sudo apt-get install libssh-dev libsmbclient-dev libv4l-dev
+
+    # qtwebengine
+    sudo apt-get install libvpx-dev libsrtp0-dev libsnappy-dev
 
     # create qt install dir (must be at the path `QT_DEVICE_DIR` defined in `env.sh`)
     sudo mkdir -p /usr/local/qt5.8

@@ -31,7 +31,7 @@ rsync -avztr --delete --rsync-path="sudo rsync" --rsh="/usr/bin/sshpass -p ${RPI
 echo
 echo "== Fix links =="
 echo
-./utils/sysroot-relativelinks.py ${RPIDEV_SYSROOT}
+${SCRIPTDIR}/utils/sysroot-relativelinks.py ${RPIDEV_SYSROOT}
 
 echo
 echo "== Link lib paths =="

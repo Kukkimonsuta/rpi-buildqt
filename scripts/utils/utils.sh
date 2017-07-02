@@ -17,9 +17,9 @@ function cloneOrPull {
         git clone $1 $2 -b $3 --depth 1 --recursive
     else
         git -C $2 clean -dffx
-        git -C $2 submodule foreach --recursive git -C $path clean -dffx
+        git -C $2 submodule foreach --recursive 'git clean -dffx'
         git -C $2 reset --hard
-	git -C $2 submodule foreach --recursive git -C $path reset --hard
+	git -C $2 submodule foreach --recursive 'git reset --hard'
         git -C $2 pull
 	git -C $2 submodule update --init --recursive
     fi
