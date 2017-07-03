@@ -18,10 +18,7 @@ echo
 for MODULE in ${MODULES}; do
 	QMAKE_ARGS=""
 	if [ "$MODULE" == "qtwebengine" ]; then
-            echo ===== BUILDING QTWEBENGINE =====
             QMAKE_ARGS="-r WEBENGINE_CONFIG+=use_proprietary_codecs"
-        else
-            echo ==== BUILDING ${MODULE} ======
 	fi
 
 	cd ${RPIDEV_SRC}/$MODULE
