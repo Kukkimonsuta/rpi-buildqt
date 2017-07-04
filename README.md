@@ -6,6 +6,7 @@ Based on https://wiki.qt.io/RaspberryPi2EGLFS, https://thebugfreeblog.blogspot.c
  - Uses the `arm-rpi-4.9.3-linux-gnueabihf` toolchain
  - Tested only on RPi 3 (but should support pi1/pi2 just fine)
  - Tested on clean `Ubuntu 16.04 (64 bit)` as host and clean `Raspbian Jessie Lite 2017-06-21` on device
+ - Tested on clean `Ubuntu for Windows 16.04 (64 bit)` as host and clean `Raspbian Jessie Lite 2017-06-21` on device (cannot build `qtwebengine`)
  - Make sure to use 64 bit host OS as that's what the used toolchain is built for
  - To use the toolchain manually from console you must run `source env.sh` first to setup environment variables
 
@@ -40,12 +41,12 @@ Based on https://wiki.qt.io/RaspberryPi2EGLFS, https://thebugfreeblog.blogspot.c
     
     # qtmultimedia
     sudo apt-get install libasound2-dev libpulse-dev gstreamer1.0-omx libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev
-    
-    # piomxtextures
-    sudo apt-get install libssh-dev libsmbclient-dev libv4l-dev
 
     # qtwebengine
     sudo apt-get install libvpx-dev libsrtp0-dev libsnappy-dev
+
+    # piomxtextures
+    sudo apt-get install libssh-dev libsmbclient-dev libv4l-dev libbz2-dev
 
     # create qt install dir (must be at the path `QT_DEVICE_DIR` defined in `env.sh`)
     sudo mkdir -p /usr/local/qt5.8
