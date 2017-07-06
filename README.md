@@ -65,3 +65,14 @@ Based on https://wiki.qt.io/RaspberryPi2EGLFS, https://thebugfreeblog.blogspot.c
 12. run `6_copy_to_device.sh` - copies built QT to configured directory on device
 13. on RPi run `sudo ldconfig`
 14. on RPi run `~/piomxtextures_pocplayer /opt/vc/src/hello_pi/hello_video/test.h264`
+
+## Troubleshooting
+
+
+1. When using older images you might need to fix old EGL libs
+
+    ```sh
+    sudo rm /usr/lib/arm-linux-gnueabihf/libEGL.so.1.0.0 /usr/lib/arm-linux-gnueabihf/libGLESv2.so.2.0.0
+    sudo ln -s /opt/vc/lib/libEGL.so /usr/lib/arm-linux-gnueabihf/libEGL.so.1.0.0
+    sudo ln -s /opt/vc/lib/libGLESv2.so /usr/lib/arm-linux-gnueabihf/libGLESv2.so.2.0.0
+    ```
