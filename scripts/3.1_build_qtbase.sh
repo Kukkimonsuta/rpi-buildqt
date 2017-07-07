@@ -25,7 +25,7 @@ if [ "$RPIDEV_DEVICE_VERSION" == "pi1" ]; then
 elif [ "$RPIDEV_DEVICE_VERSION" == "pi2" ]; then
     DEVICE=linux-rasp-pi2-g++
 elif [ "$RPIDEV_DEVICE_VERSION" == "pi3" ]; then
-    if [ "$QT_BUILD_VERSION" == "5.8" ]; then
+    if [[ "$QT_BUILD_VERSION" == "v5.8"* ]]; then
         DEVICE=linux-rpi3-g++
     else
         DEVICE=linux-rasp-pi3-g++

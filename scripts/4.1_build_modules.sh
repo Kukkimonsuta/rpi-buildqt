@@ -18,7 +18,7 @@ echo
 for MODULE in ${MODULES}; do
 	QMAKE_ARGS=""
 	if [ "$MODULE" == "qtwebengine" ]; then
-            QMAKE_ARGS="-r WEBENGINE_CONFIG+=use_proprietary_codecs"
+            QMAKE_ARGS="WEBENGINE_CONFIG+=use_proprietary_codecs QMAKE_LIBDIR_OPENGL_ES2=\"/usr/lib/arm-linux-gnueabihf\" QMAKE_LIBDIR_EGL=\"/usr/lib/arm-linux-gnueabihf\""
 	fi
 
 	cd ${RPIDEV_SRC}/$MODULE
@@ -27,8 +27,6 @@ for MODULE in ${MODULES}; do
 	echo "== Configuring ${MODULE} =="
 	echo
 	${QT_INSTALL_DIR_HOST}/bin/qmake ${QMAKE_ARGS}
-
-	confirm "Continue building?"
 
 	echo
 	echo "== Building ${MODULE} =="

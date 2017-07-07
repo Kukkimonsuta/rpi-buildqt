@@ -16,12 +16,12 @@ export RPIDEV_DEVICE_USER=pi                # username
 export RPIDEV_DEVICE_PW=raspberry           # password
 
 # qt configuration
-export QT_BUILD_VERSION=5.9                 # 5.8 5.9
-export QT_INSTALL_DIR=${RPIDEV_BUILD}/qt${QT_BUILD_VERSION}
-export QT_INSTALL_DIR_HOST=${RPIDEV_BUILD}/qt${QT_BUILD_VERSION}-host
-export QT_DEVICE_DIR=/usr/local/qt${QT_BUILD_VERSION}
+export QT_BUILD_VERSION=v5.9.1                 # v5.8.0 v5.9.1
+export QT_INSTALL_DIR=${RPIDEV_BUILD}/qt_${QT_BUILD_VERSION}
+export QT_INSTALL_DIR_HOST=${RPIDEV_BUILD}/qt_${QT_BUILD_VERSION}-host
+export QT_DEVICE_DIR=/usr/local/qt_${QT_BUILD_VERSION}
 
-if [ "$QT_BUILD_VERSION" == "5.8" ]; then
+if [[ "$QT_BUILD_VERSION" == "v5.8"* ]]; then
 	export QT_BUILD_MODULES="qtdeclarative qtquickcontrols qtquickcontrols2 qtmultimedia"
 else
 	export QT_BUILD_MODULES="qtdeclarative qtquickcontrols qtquickcontrols2 qtmultimedia qtsvg qtxmlpatterns qtwebsockets qtserialport qtwebchannel qtwebengine"

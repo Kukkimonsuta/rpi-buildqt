@@ -37,22 +37,16 @@ Based on https://wiki.qt.io/RaspberryPi2EGLFS, https://thebugfreeblog.blogspot.c
     sudo apt-get install rsync
 
     # qtbase
-    sudo apt-get install libboost1.55-all-dev libudev-dev libinput-dev libts-dev libmtdev-dev libjpeg-dev libfontconfig1-dev libssl-dev libdbus-1-dev libglib2.0-dev
+    sudo apt-get install libboost1.55-all-dev libudev-dev libinput-dev libts-dev libmtdev-dev libjpeg-dev libfontconfig1-dev libssl-dev libdbus-1-dev libglib2.0-dev libxkbcommon-dev
     
     # qtmultimedia
     sudo apt-get install libasound2-dev libpulse-dev gstreamer1.0-omx libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev
 
     # qtwebengine
-    sudo apt-get install libvpx-dev libsrtp0-dev libsnappy-dev
+    sudo apt-get install libvpx-dev libsrtp0-dev libsnappy-dev libnss3-dev
 
     # piomxtextures
     sudo apt-get install libssh-dev libsmbclient-dev libv4l-dev libbz2-dev
-
-    # create qt install dir (must be at the path `QT_DEVICE_DIR` defined in `env.sh`)
-    sudo mkdir -p /usr/local/qt5.8
-
-    # register the lib directory in ld
-    echo /usr/local/qt5.8/lib | sudo tee /etc/ld.so.conf.d/qt5.8.conf
     ```
 4. run `1_tools.sh` - downloads and prepares toolchain
 5. run `2_sysroot.sh` - synchronizes libs and headers from device to build host
@@ -62,9 +56,8 @@ Based on https://wiki.qt.io/RaspberryPi2EGLFS, https://thebugfreeblog.blogspot.c
 9. run `4.1_build_modules.sh` - builds all configured or explicitly specified (ex. `4.1_build_modules.sh qtmultimedia`) modules and installs them to configured directories
 10. run `5.0_download_piomxtextures.sh` - downloads latest version of `piomxtextures`
 11. run `5.1_build_piomxtextures.sh` - builds `piomxtextures` and installs it to configured directories
-12. run `6_copy_to_device.sh` - copies built QT to configured directory on device
-13. on RPi run `sudo ldconfig`
-14. on RPi run `~/piomxtextures_pocplayer /opt/vc/src/hello_pi/hello_video/test.h264`
+12. run `6_copy_to_device.sh` - copies built QT to configured directory on device and runs ldconfig
+13. on RPi run `~/piomxtextures_pocplayer /opt/vc/src/hello_pi/hello_video/test.h264`
 
 ## Troubleshooting
 
