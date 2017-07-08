@@ -32,6 +32,18 @@ Based on https://wiki.qt.io/RaspberryPi2EGLFS, https://thebugfreeblog.blogspot.c
     # change gpu memory to 256 MB and Expand File System for SD Card
     sudo raspi-config
 
+    # ensure EGL/GLES libraries are available
+    sudo rm /usr/lib/arm-linux-gnueabihf/libEGL.so* /usr/lib/arm-linux-gnueabihf/libGLESv2.so*
+    
+    sudo ln -s /opt/vc/lib/libEGL.so /usr/lib/arm-linux-gnueabihf/libEGL.so.1.0.0
+    sudo ln -s /opt/vc/lib/libGLESv2.so /usr/lib/arm-linux-gnueabihf/libGLESv2.so.2.0.0
+    
+    sudo ln -s libEGL.so.1.0.0 /usr/lib/arm-linux-gnueabihf/libEGL.so.1
+    sudo ln -s libGLESv2.so.2.0.0 /usr/lib/arm-linux-gnueabihf/libGLESv2.so.2
+    
+    sudo ln -s libEGL.so.1.0.0 /usr/lib/arm-linux-gnueabihf/libEGL.so
+    sudo ln -s libGLESv2.so.2.0.0 /usr/lib/arm-linux-gnueabihf/libGLESv2.so
+
     # install tools and dependencies
     sudo apt-get update
     sudo apt-get install rsync
@@ -58,14 +70,3 @@ Based on https://wiki.qt.io/RaspberryPi2EGLFS, https://thebugfreeblog.blogspot.c
 11. run `5.1_build_piomxtextures.sh` - builds `piomxtextures` and installs it to configured directories
 12. run `6_copy_to_device.sh` - copies built QT to configured directory on device and runs ldconfig
 13. on RPi run `~/piomxtextures_pocplayer /opt/vc/src/hello_pi/hello_video/test.h264`
-
-## Troubleshooting
-
-
-1. When using older images you might need to fix old EGL libs
-
-    ```sh
-    sudo rm /usr/lib/arm-linux-gnueabihf/libEGL.so.1.0.0 /usr/lib/arm-linux-gnueabihf/libGLESv2.so.2.0.0
-    sudo ln -s /opt/vc/lib/libEGL.so /usr/lib/arm-linux-gnueabihf/libEGL.so.1.0.0
-    sudo ln -s /opt/vc/lib/libGLESv2.so /usr/lib/arm-linux-gnueabihf/libGLESv2.so.2.0.0
-    ```
